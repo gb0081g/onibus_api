@@ -2,6 +2,7 @@
 require('dotenv').config(); // Carrega o .env logo no início
 const express = require('express');
 const lineRoutes = require('./src/routes/lineRoutes');
+const usersRoutes = require('./src/routes/usersRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -15,8 +16,9 @@ app.get('/', (req, res) => {
 
 //app.use('/onibus-api', lineRoutes);
 app.use(lineRoutes);
+app.use(usersRoutes);
 
 // Inicia o servidor
 app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
+  console.log(`Servidor rodando na porta ${PORT}/ http://localhost:3000/`);
 });

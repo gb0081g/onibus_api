@@ -6,7 +6,7 @@ const lineController = require('../controllers/lineController');
 router.post('/bus-line', lineController.createLine);
 
 //Rota para LER (Read) todos os registros de linha
-router.get('/bus-line', lineController.getAllLine);
+router.get('/bus-line/all', lineController.getAllLine);
 
 //Rota para LER (Read) uma linha pelo ID
 router.get('/bus-line/:id', lineController.getLineById);

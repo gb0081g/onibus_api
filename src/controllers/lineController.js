@@ -3,15 +3,15 @@ const lineModel = require('../models/lineModel');
 // CREATE
 const createLine = async (req, res) => {
   try {
-    const { nome_linha, numero_linha, origem_linha, destino_linha, sentido_linha, numero_veiculo } = req.body;
+    const { route_name, route_number, route_origin, route_destination, route_way, bus_number } = req.body;
 
     const lineData = {
-      nome_linha,
-      numero_linha,
-      origem_linha,
-      destino_linha,
-      sentido_linha,
-      numero_veiculo
+      route_name,
+      route_number,
+      route_origin,
+      route_destination,
+      route_way,
+      bus_number
     };
 
     const newLine = await lineModel.create(lineData);
@@ -53,7 +53,7 @@ const getLineById = async (req, res) => {
 const updateLine = async (req, res) => {
   try {
     const { id } = req.params;
-    const { nome_linha, numero_linha, origem_linha, destino_linha, sentido_linha, numero_veiculo } = req.body;
+    const { route_name,route_number,route_origin,route_destination,route_way,bus_number } = req.body;
 
     // Verificamos se a linha existe antes de atualizar
     const lineExists = await lineModel.findById(id);
@@ -61,7 +61,7 @@ const updateLine = async (req, res) => {
       return res.status(404).json({ message: 'Linha de onibus não encontrada para atualização.' });
     }
 
-    const updatedData = { nome_linha, numero_linha, origem_linha, destino_linha, sentido_linha, numero_veiculo };
+    const updatedData = { route_name, route_number, route_origin, route_destination, route_way, bus_number };
     const updatedLine = await lineModel.update(id, updatedData);
 
     res.status(200).json(updatedLine);
